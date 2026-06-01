@@ -1,0 +1,29 @@
+LeetCode 455 - Assign Cookies 
+
+int findContentChildren(int* g, int gSize, int* s, int sSize) { 
+    for(int i=0;i<gSize-1;i++) { 
+        for(int j=0;j<gSize-i-1;j++) { 
+            if(g[j]>g[j+1]){ 
+                int t=g[j]; 
+                g[j]=g[j+1]; 
+                g[j+1]=t; 
+            } 
+        } 
+    } 
+    for(int i=0;i<sSize-1;i++) { 
+        for(int j=0;j<sSize-i-1;j++) { 
+            if(s[j]>s[j+1]) { 
+                int t=s[j]; 
+                s[j]=s[j+1]; 
+                s[j+1]=t; 
+            } 
+        } 
+    } 
+    int i=0,j=0; 
+    while(i<gSize && j<sSize) { 
+        if(s[j]>=g[i]) 
+            i++; 
+        j++; 
+    } 
+    return i; 
+} 
